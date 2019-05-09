@@ -1,0 +1,152 @@
+@font-face {
+    font-family: 'roboto-thin';
+    src: url('../fonts/Roboto-Thin.ttf');
+}
+@font-face {
+    font-family: 'roboto-light';
+    src: url('../fonts/Roboto-Light.ttf');
+}
+@font-face {
+    font-family: 'roboto-regular';
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+@font-face {
+    font-family: 'roboto-medium';
+    src: url('../fonts/Roboto-Medium.ttf');
+}
+
+body {
+    height: 100%;
+}
+
+.main-container {
+    margin: 5px 25px;
+    height: 680px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 45px auto 85px;
+}
+
+.content {
+    grid-column: 3/-1;
+    padding: 18px;
+    background-color: beige;
+}
+
+.content-full {
+    grid-column: 1/-1;
+    padding: 18px;
+    background-color: beige;
+}
+
+.sidebar {
+    grid-column: 1/3;
+    background-color: rgb(40, 53, 46);
+    padding: 5px;
+}
+
+.sidebar a {
+    font-family: 'roboto-thin';
+    color: #fff2aa;
+    border-bottom: 1px dotted #8f875e;
+    padding: 10px 5px;
+    display: block;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #575238;
+}
+
+.sidebar h2 {
+    font-family: 'roboto-regular';
+    color: #dbd091;
+    font-size: 1.6em;
+    margin-left: 5px;
+}
+
+.login {
+    grid-column: 5/-5;
+    padding: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 100px 0;
+}
+
+label {
+    font-family: 'roboto-regular';
+}
+
+h1 {
+    font-family: 'roboto-medium';
+}
+
+header {
+    padding: 10px 20px;
+    font-family: 'roboto-light';
+    grid-column: 1/-1;
+}
+
+.brand {
+    font-size: 1.2em;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'roboto-thin';
+    grid-column: 1/-1;
+}
+
+input[type=text],
+input[type=date],
+select
+{
+    font-family: 'roboto-light';
+}
+
+.flash-message {
+    grid-column: 1/-1;
+    text-align: center;
+}
+
+.main-nav {
+    float: right;
+
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #fff2aa;
+    margin-left: 20px;
+}
+
+.main-nav a:hover {
+    color: white;
+    font-family: 'roboto-regular';
+}
+
+.subheading {
+    margin-top: -18px;
+    margin-bottom: 18px;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.search-box {
+    float: right;
+}
+
+.blocks-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+    grid-gap: 20px;
+}
+
+.block {
+    background-color: #fff;
+}
+
+

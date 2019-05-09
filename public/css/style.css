@@ -24,7 +24,7 @@ body {
     height: 680px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 45px auto 85px;
+    grid-template-rows: max-content auto 85px;
 }
 
 .content {

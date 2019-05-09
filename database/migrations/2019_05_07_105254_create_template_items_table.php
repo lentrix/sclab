@@ -16,8 +16,9 @@ class CreateTemplateItemsTable extends Migration
         Schema::create('template_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('template_id')->unsigned();
+            $table->string('category')->nullable();
             $table->string('name');
-            $table->string('normal');
+            $table->string('normal')->nullable();
             $table->integer('order');
 
             $table->foreign('template_id')->references('id')->on('templates');

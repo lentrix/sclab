@@ -26,6 +26,11 @@
         </p>
 
         <p>
+            {{Form::label('categories','Categories (separated by comma)')}}
+            {{Form::text('categories',null, ['class'=>'w3-input'])}}
+        </p>
+
+        <p>
             {{Form::label('price','Price')}}
             {{Form::text('price',null, ['class'=>'w3-input'])}}
         </p>

@@ -43,6 +43,7 @@
             <table class="w3-table w3-bordered">
                 <thead>
                     <tr>
+                        <th>Category</th>
                         <th>Name</th>
                         <th>Normal Values</th>
                         <th>*</th>
@@ -51,8 +52,9 @@
                 <tbody>
                     @foreach($template->orderedItems as $item)
                     <tr>
+                        <td>{{$item->category}}</td>
                         <td>{{$item->name}}</td>
-                        <td>{{$item->normal}}</td>
+                        <td><pre>{{$item->normal}}</pre></td>
                         <td>
                             <form action='{{url("/templates/$template->id/move-up")}}'
                                         style="display: inline-block"
@@ -92,25 +94,36 @@
     </div>
 </div>
 
-<div id="add-item-modal" class="w3-modal">
+<div id="add-item-modal" class="w3-modal w3-animate-opacity">
     <div class="w3-modal-content" style="width: 400px">
         <button class="w3-button w3-black w3-tiny w3-right" id="close-modal">x</button>
         <div style="padding: 20px;">
             <h3>Add Item</h3>
-            <form action='{{url("/templates/$template->id/add")}}' method="post">
-                {{csrf_field()}}
-                <p>
-                    <label for="name">Item Name</label>
-                    <input type="text" name="name" id="name" class="w3-input">
-                </p>
-                <p>
-                    <label for="normal">Normal Values</label>
-                    <input type="text" name="normal" id="normal" class="w3-input">
-                </p>
-                <p>
-                    <button class="w3-button w3-teal w3-hover-light-green">Submit</button>
-                </p>
-            </form>
+
+            {!! Form::open(['method'=>'post', 'url'=>"/templates/$template->id/add"]) !!}
+
+            <p>
+                {{Form::label('category', 'Category')}}
+                {{Form::select('category',$template->categoryList(),null,
+                    ['class'=>'w3-input','placeholder'=>'Select category'])}}
+            </p>
+
+            <p>
+                {{Form::label('name', 'Item Name')}}
+                {{Form::text('name',null,['class'=>'w3-input'])}}
+            </p>
+
+            <p>
+                {{Form::label('normal', 'Normal Values')}}
+                {{Form::textarea('normal',null,['class'=>'w3-input','rows'=>5])}}
+            </p>
+
+            <p>
+                <button class="w3-button w3-teal w3-hover-green">Add Item</button>
+            </p>
+
+            {!! Form::close() !!}
+
         </div>
     </div>
 </div>

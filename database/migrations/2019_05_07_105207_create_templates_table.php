@@ -17,6 +17,7 @@ class CreateTemplatesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->float('price');
+            $table->string('categories');
             $table->string('remarks')->nullable();
             $table->timestamps();
         });

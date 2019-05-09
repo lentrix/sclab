@@ -22,6 +22,7 @@ class TemplateController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'price' =>'required|numeric',
+            'categories' => 'required'
         ]);
 
         $template = Template::create($request->all());
@@ -51,12 +52,12 @@ class TemplateController extends Controller
     public function addItem(Request $request, Template $template) {
         $this->validate($request, [
             'name' => 'required',
-            'normal' => 'required'
         ]);
 
         $item = \App\TemplateItem::create([
             'template_id' => $template->id,
             'name' => $request['name'],
+            'category' => $request['category'],
             'normal' => $request['normal'],
             'order' => $template->nextOrder,
         ]);
@@ -75,10 +76,9 @@ class TemplateController extends Controller
 
     public function moveUp(Template $template, Request $request) {
         $item = TemplateItem::find($request['id']);
+        $pItem = $item->previousItem;
 
-        if($item->order>1) {
-            $pItem = $item->previousItem;
-
+        if($pItem) {
             $previousOrder = $pItem->order;
 
             $pItem->order = $item->order;
@@ -92,10 +92,9 @@ class TemplateController extends Controller
 
     public function moveDown(Template $template, Request $request) {
         $item = TemplateItem::find($request['id']);
+        $nItem = $item->nextItem;
 
-        if($item->order < $template->nextOrder-1) {
-            $nItem = $item->nextItem;
-
+        if($nItem) {
             $nextOrder = $nItem->order;
 
             $nItem->order = $item->order;

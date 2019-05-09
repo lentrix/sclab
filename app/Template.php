@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Template extends Model
 {
-    protected $fillable = ['name','price','remarks'];
+    protected $fillable = ['name', 'categories' ,'price','remarks'];
 
     public function getItemCountAttribute() {
         return count($this->items);
@@ -28,6 +28,14 @@ class Template extends Model
 
     public function getOrderedItemsAttribute() {
         return \App\TemplateItem::where('template_id', $this->id)
-                ->orderByRaw('`order`, name')->get();
+                ->orderByRaw('category, `order`')->get();
+    }
+
+    public function categoryList() {
+        $arr = [];
+        foreach(explode(',', $this->categories) as $cat) {
+            $arr[$cat] = $cat;
+        }
+        return $arr;
     }
 }

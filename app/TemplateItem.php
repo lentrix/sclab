@@ -25,4 +25,8 @@ class TemplateItem extends Model
                 ->where('order','>',$this->order)
                 ->orderBy('order','ASC')->first();
     }
+
+    public function labTestItems() {
+        return $this->hasMany('App\LabTestItem');
+    }
 }

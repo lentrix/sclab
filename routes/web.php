@@ -49,7 +49,14 @@ Route::group(['middleware'=>['auth', 'medtech']], function(){
     Route::patch('/templates/{template}', 'TemplateController@update');
     Route::post('/templates', 'TemplateController@store');
 
-    Route::get('/patients/{patient}/create-lab', 'PatientController@createLab');
+    Route::get('/patients/{patient}/select-lab', 'PatientController@selectLab');
+    Route::get('/patients/{patient}/{template}', 'PatientController@createLab');
+
+
+    Route::get('/labs/{labTest}/entry', 'LabTestController@entry');
+    Route::get('/labs/{labTest}/printable', 'LabTestController@print');
+    Route::post('/labs/{labTest}/save-entry', 'LabTestController@saveEntry');
+    Route::get('/labs/{labTest}', 'LabTestController@view');
 });
 
 Route::group(['middleware'=>['auth','admin']], function(){

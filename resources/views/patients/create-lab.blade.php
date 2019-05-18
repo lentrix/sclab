@@ -11,21 +11,10 @@
     </div>
 @stop
 
-
 @section('content')
 
 <div class="content">
-    <h1>Create Lab Test</h1>
-    <div class="subheading">
-        Patient: {{$patient->fullname}}
-    </div>
-    <div class="blocks-container">
-        <div class="w3-card-2 block"></div>
-        <div class="w3-card-2 block"></div>
-        <div class="w3-card-2 block"></div>
-        <div class="w3-card-2 block"></div>
-        <div class="w3-card-2 block"></div>
-    </div>
+
 </div>
 
 @stop

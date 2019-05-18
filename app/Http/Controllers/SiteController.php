@@ -15,19 +15,22 @@ class SiteController extends Controller
     }
 
     public function login(Request $request) {
-
-        $this->validate($request, [
-            'username'=>'required',
-            'password'=>'required'
-        ]);
-
-        if(!auth()->attempt(request(['username', 'password']))) {
-            return back()->withErrors([
-                'message' => 'Invalid user credentials!'
+        try {
+            $this->validate($request, [
+                'username'=>'required',
+                'password'=>'required'
             ]);
-        }
 
-        return redirect('/');
+            if(!auth()->attempt(request(['username', 'password']))) {
+                return back()->withErrors([
+                    'message' => 'Invalid user credentials!'
+                ]);
+            }
+
+            return redirect('/');
+        }catch(Exception $exp) {
+            return redirect()->back()->withError($exp->getMessage());
+        }
 
     }
 

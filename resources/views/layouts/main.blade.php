@@ -25,7 +25,7 @@
 
         <footer class="w3-row w3-col m12 w3-dark-gray">
             Copyright &copy; 2019. <br>
-            Stars and Comet Medical &amp; Laboratory Clinic <br>
+            Stars and Comet Medical Clinic &amp; Laboratory<br>
             All rights reserved.
         </footer>
     </div>

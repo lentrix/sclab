@@ -68,7 +68,11 @@ class TemplateController extends Controller
     public function removeItem(TemplateItem $item, Request $request) {
         $item = TemplateItem::find($request['id']);
         if($item) {
-            $item->delete();
+            try {
+                $item->delete();
+            }catch(PDOException $ex) {
+                return redirect()->back()->with('Error', $ex->message);
+            }
         }
 
         return redirect()->back();

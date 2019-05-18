@@ -149,4 +149,17 @@ select
     background-color: #fff;
 }
 
+.lab-entry-row {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-gap: 10px;
+    border-bottom: 1px solid #9f9f9f;
+}
+
+.results {
+    width: 620px;
+    padding: 15px;
+    border: 1px dotted #9f9f9f;
+}
+
 

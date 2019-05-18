@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Patient;
+use App\Template;
+use App\LabTest;
+use App\LabTestItem;
 
 class PatientController extends Controller
 {
@@ -40,15 +44,15 @@ class PatientController extends Controller
         return redirect("/patient/$patient->id");
     }
 
-    public function view(\App\Patient $patient) {
+    public function view(Patient $patient) {
         return view('patients.view', compact('patient'));
     }
 
-    public function edit(\App\Patient $patient) {
+    public function edit(Patient $patient) {
         return view('patients.edit', compact('patient'));
     }
 
-    public function update(Request $request, \App\Patient $patient) {
+    public function update(Request $request, Patient $patient) {
         $this->validate($request, [
             'lname' => 'required',
             'fname' => 'required',
@@ -63,7 +67,26 @@ class PatientController extends Controller
         return redirect("/patients/$patient->id");
     }
 
-    public function createLab(\App\Patient $patient) {
-        return view('patients/create-lab', compact('patient'));
+    public function selectLab(Patient $patient) {
+        $templates = \App\Template::orderBy('name')->get();
+
+        return view('patients/select-lab', ['patient'=>$patient, 'templates'=>$templates]);
+    }
+
+    public function createLab(Patient $patient, Template $template) {
+        $labTest = LabTest::create([
+            'template_id' => $template->id,
+            'patient_id' => $patient->id,
+            'created_by' => auth()->user()->id
+        ]);
+
+        foreach($template->items as $item) {
+            LabTestItem::create([
+                'lab_test_id' => $labTest->id,
+                'template_item_id' => $item->id,
+            ]);
+        }
+
+        return redirect("/labs/$labTest->id/entry");
     }
 }

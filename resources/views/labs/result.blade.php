@@ -1,23 +1,15 @@
-@extends('layouts.main')
-
-@section('sidebar')
-
-<div class="sidebar">
-    <h2>Lab Test Menu</h2>
-    <a href="{{url('/labs/create')}}">Create Lab Test</a>
-    <a href="{{url('/labs/today')}}">Today's Lab Tests</a>
-    <a href='{{url("/labs/$labTest->id/entry")}}'>Update Entries</a>
-    <a href='{{url("/labs/$labTest->id/printable")}}' target="_blank">Printable Result</a>
-</div>
-
-@stop
-
-@section('content')
-
-<div class="content">
-    <div style="width: calc(72px * 8.5); padding: 10px; border: 1px solid #cfcfcf">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laboratory Result</title>
+</head>
+<body>
+    <div style="width: 100%; padding: 10px; border: 1px solid #cfcfcf">
         <img src="{{asset('images/banner.png')}}" width="100%" style="margin-bottom: 20px" />
-        <h4 style="text-align:center">{{$labTest->template->name}}</h4>
+        <h2 style="text-align:center">{{$labTest->template->name}}</h2>
         <table style="width: 100%">
             <tr>
                 <td>
@@ -81,6 +73,5 @@
             </tr>
         </table>
     </div>
-</div>
-
-@stop
+</body>
+</html>

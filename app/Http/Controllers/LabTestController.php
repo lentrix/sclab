@@ -34,7 +34,8 @@ class LabTestController extends Controller
     }
 
     public function print(LabTest $labTest) {
-        $pdf = PDF::loadView('/labs/view', compact('labTest'));
+        // $pdf = PDF::loadView('/labs/view', compact('labTest'));
+        $pdf = PDF::loadView('labs/result', compact('labTest'));
         return $pdf->stream();
     }
 }

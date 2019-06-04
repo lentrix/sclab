@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemplatesTable extends Migration
+class CreateLabsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('labs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('patient_id')->unsigned();
+            $table->bigInteger('med_tech')->unsigned();
             $table->string('name');
-            $table->float('price');
-            $table->string('categories');
+            $table->string('slug')->default('');
+            $table->date('date');
+            $table->string('physician')->nullable();
+            $table->string('pathologist')->nullable();
             $table->string('remarks')->nullable();
+            $table->float('price');
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('templates');
+        Schema::dropIfExists('labs');
     }
 }

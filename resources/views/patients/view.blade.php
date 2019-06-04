@@ -48,7 +48,29 @@
         </div>
 
         <div style="grid-column: 2/-1">
-            <h2>History</h2>
+            <h2>Lab History</h2>
+            <table class="w3-table w3-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Laboratory</th>
+                        <th>...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($patient->labHistory() as $lab)
+                        <tr>
+                            <td>{{$lab->date}}</td>
+                            <td>{{$lab->name}}</td>
+                            <td>
+                                <a href='{{url($lab->slug)}}' class="w3-button w3-teal w3-tiny w3-padding-small">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach 
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

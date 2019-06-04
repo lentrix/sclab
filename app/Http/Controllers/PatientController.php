@@ -68,9 +68,8 @@ class PatientController extends Controller
     }
 
     public function selectLab(Patient $patient) {
-        $templates = \App\Template::orderBy('name')->get();
 
-        return view('patients/select-lab', ['patient'=>$patient, 'templates'=>$templates]);
+        return view('patients/select-lab', ['patient'=>$patient]);
     }
 
     public function createLab(Patient $patient, Template $template) {

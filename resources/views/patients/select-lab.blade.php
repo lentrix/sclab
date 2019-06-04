@@ -20,24 +20,17 @@
         Patient: {{$patient->fullname}}
     </div>
     <div class="blocks-container">
-        @foreach($templates as $template)
-
+        
         <div class="w3-card-2 w3-display-container" style="padding: 15px; background-color: white">
             <div class="w3-right">
-                <a href='{{url("/patients/$patient->id/$template->id")}}'
+                <a href='{{url("/patients/$patient->id/blood-chem")}}'
                         class="w3-button w3-teal w3-hover-green w3-display-bottomright">
                     Select
                 </a>
             </div>
-            <h3>{{$template->name}}</h3>
-            <p>{{$template->remarks}}</p>
-            <div class="w3-left">
-                <h2>{{money_format("PhP %i", $template->price)}}</h2>
-            </div>
-
+            <h3>Blood Chemisry</h3>
         </div>
 
-        @endforeach
     </div>
 </div>
 

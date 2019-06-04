@@ -38,25 +38,16 @@ Route::group(['middleware'=>['auth','receptionist']], function() {
 });
 
 Route::group(['middleware'=>['auth', 'medtech']], function(){
-    Route::get('/templates', 'TemplateController@index');
-    Route::get('/templates/create', 'TemplateController@create');
-    Route::post('/templates/{template}/add', 'TemplateController@addItem');
-    Route::get('/templates/{template}/update', 'TemplateController@edit');
-    Route::post('/templates/{template}/remove', 'TemplateController@removeItem');
-    Route::post('/templates/{template}/move-up', 'TemplateController@moveUp');
-    Route::post('/templates/{template}/move-down', 'TemplateController@moveDown');
-    Route::get('/templates/{template}', 'TemplateController@view');
-    Route::patch('/templates/{template}', 'TemplateController@update');
-    Route::post('/templates', 'TemplateController@store');
+    
 
     Route::get('/patients/{patient}/select-lab', 'PatientController@selectLab');
-    Route::get('/patients/{patient}/{template}', 'PatientController@createLab');
+    Route::get('/patients/{patient}/blood-chem', 'BloodChemistryController@create');
+    Route::post('/patients/{patient}/blood-chem', 'BloodChemistryController@store');
+
+    Route::get('/labs/blood-chem/{bloodChemistry}', 'BloodChemistryController@view');
+    Route::get('/labs/blood-chem/{bloodChemistry}/result', 'BloodChemistryController@result');
 
 
-    Route::get('/labs/{labTest}/entry', 'LabTestController@entry');
-    Route::get('/labs/{labTest}/printable', 'LabTestController@print');
-    Route::post('/labs/{labTest}/save-entry', 'LabTestController@saveEntry');
-    Route::get('/labs/{labTest}', 'LabTestController@view');
 });
 
 Route::group(['middleware'=>['auth','admin']], function(){

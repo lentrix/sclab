@@ -13,4 +13,14 @@ class Patient extends Model
     public function getFullnameAttribute() {
         return $this->lname . ", " . $this->fname;
     }
+
+    public function labs() {
+        return $this->hasMany('App\Lab');
+    }
+
+    public function labHistory() {
+        return \App\Lab::where('patient_id', $this->id)
+            ->orderBy('date', 'DESC')
+            ->get();
+    }
 }

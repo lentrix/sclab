@@ -1,29 +1,18 @@
 @extends('layouts.main')
 
 @section('sidebar')
-
-<div class="sidebar">
-    <h2>Patient Menu</h2>
-    <a href="{{url('/patients/create')}}">Create a Patient</a>
-    <a href="{{url('/patients/today')}}">Transacting Today</a>
-</div>
-
+    <div class="sidebar">
+        <h2>Patient Menu</h2>
+        <a href="{{url('/patients/create')}}">Create New Patient</a>
+        <a href="{{url('/patients/today')}}">Transacting Today</a>
+    </div>
 @stop
+
 
 @section('content')
 
 <div class="content">
-    <div class="search-box">
-        <form action="{{url('/patients')}}">
-            <input type="text" name="filter" class="w3-input" style="width: 300px;" placeholder="Enter search key">
-        </form>
-    </div>
-    <h1>Patients</h1>
-
-    <div class="subheading">
-        {{$filter?"Search results for key: \"$filter\"":"Recent Access"}}
-    </div>
-
+    <h1>Patients Transacting Today</h1>
     <table class="w3-table w3-bordered">
         <thead>
             <tr>
@@ -53,5 +42,4 @@
     </table>
 </div>
 
-@stop
-
+@endSection

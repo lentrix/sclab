@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="{{asset('css/w3.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <script src="{{asset('js/jquery.js')}}"></script>
+
+    @yield('style')
 </head>
 <body>
-
+    @include('flash')
     <div class="main-container w3-card-4">
 
         <header class="w3-row w3-col m12 w3-blue-gray">

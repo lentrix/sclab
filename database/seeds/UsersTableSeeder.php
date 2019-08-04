@@ -17,6 +17,18 @@ class UsersTableSeeder extends Seeder
             'role' => 'admin',
             'password' => bcrypt('password123'),
         ]);
+        App\User::create([
+            'username' => 'recept',
+            'fullname' => 'Sample Receptionist',
+            'role' => 'receptionist',
+            'password' => bcrypt('password123'),
+        ]);
+        App\User::create([
+            'username' => 'medtech',
+            'fullname' => 'Sample Medical Tech',
+            'role' => 'medtech',
+            'password' => bcrypt('password123'),
+        ]);
 
     }
 }

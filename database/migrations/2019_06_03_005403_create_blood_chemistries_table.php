@@ -32,6 +32,8 @@ class CreateBloodChemistriesTable extends Migration
             $table->string('potassium')->nullable();
             $table->string('bun')->nullable();
             $table->timestamps();
+
+            $table->foreign('lab_id')->references('id')->on('labs');
         });
     }
 

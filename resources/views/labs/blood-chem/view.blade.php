@@ -4,6 +4,7 @@
 
     <div class="sidebar">
         <h2>Patient Menu</h2>
+        <a href='{{url("/patients/{$bloodChemistry->lab->patient->id}")}}'>Patient Record</a>
         <a href="{{url('/patients/create')}}">Create New Patient</a>
         <a href="{{url('/patients/today')}}">Transacting Today</a>
         <a href='{{url("/patients/{$bloodChemistry->lab->patient_id}/select-lab")}}'>New Lab Test</a>

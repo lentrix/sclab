@@ -16,7 +16,8 @@ class BloodChemistryController extends Controller
 
     public function store(Request $request) {
         $this->validate($request, [
-            'patient_id'=>'required'
+            'patient_id'=>'required',
+            'price' => 'required|numeric'
         ]);
 
         $lab = Lab::create([
@@ -58,6 +59,7 @@ class BloodChemistryController extends Controller
     public function view(BloodChemistry $bloodChemistry) {
         
         return view('labs/blood-chem/view', compact('bloodChemistry'));
+        
     }
 
     public function result(BloodChemistry $bloodChemistry) {
